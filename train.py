@@ -111,7 +111,7 @@ def main():
         batch_size=args.batch_size
     )
 
-    Initialize either CNN or LSTM.
+    # Initialize either CNN or LSTM
     model = create_model(
         model_name=args.model,
         vocab_size=len(vocab)
