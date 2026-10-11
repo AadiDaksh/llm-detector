@@ -1,0 +1,55 @@
+{
+    "model": "lstm",
+    "mode": "output",
+    "test_accuracy": 0.922566371681416,
+    "classification_report": {
+        "GPT": {
+            "precision": 0.8621700879765396,
+            "recall": 0.9767441860465116,
+            "f1-score": 0.9158878504672897,
+            "support": 301.0
+        },
+        "Claude": {
+            "precision": 0.9593220338983051,
+            "recall": 0.9370860927152318,
+            "f1-score": 0.948073701842546,
+            "support": 302.0
+        },
+        "Gemini": {
+            "precision": 0.9589552238805971,
+            "recall": 0.8538205980066446,
+            "f1-score": 0.9033391915641477,
+            "support": 301.0
+        },
+        "accuracy": 0.922566371681416,
+        "macro avg": {
+            "precision": 0.9268157819184806,
+            "recall": 0.9225502922561293,
+            "f1-score": 0.9224335812913278,
+            "support": 904.0
+        },
+        "weighted avg": {
+            "precision": 0.926851740161821,
+            "recall": 0.922566371681416,
+            "f1-score": 0.9224619442565393,
+            "support": 904.0
+        }
+    },
+    "confusion_matrix": [
+        [
+            294,
+            3,
+            4
+        ],
+        [
+            12,
+            283,
+            7
+        ],
+        [
+            35,
+            9,
+            257
+        ]
+    ]
+}

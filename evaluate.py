@@ -233,7 +233,7 @@ def main():
     )
 
     checkpoint_path = (
-        Path("results") / args.model / f"best_{args.mode}.pt"
+        Path("results") / args.model / f"{args.mode}_best.pt"
     )
 
     if not checkpoint_path.exists():
