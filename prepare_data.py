@@ -1,4 +1,3 @@
-
 import json
 import re
 from pathlib import Path
@@ -37,7 +36,12 @@ def load_data():
     path = csv_files[0]
     print(f"Loading: {path}")
 
-    df = pd.read_csv(path, low_memory=False)
+    df = pd.read_csv(
+        path,
+        encoding="cp1252",
+        encoding_errors="replace",
+        low_memory=False
+    )
 
     required = {"Question", "Answer", "Source"}
     missing = required - set(df.columns)
@@ -306,10 +310,6 @@ def save_data(train_df, val_df, test_df):
 
 
 def main():
-    print("=" * 50)
-    print("LLM DETECTOR - DATA PREPARATION")
-    print("=" * 50)
-
     df = load_data()
     df = prepare_data(df)
 
