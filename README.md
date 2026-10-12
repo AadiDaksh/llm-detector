@@ -124,11 +124,11 @@ The CNN classifier identifies local linguistic patterns using convolutional filt
 
 The Bidirectional LSTM processes text in forward and backward directions to capture contextual and sequential relationships.
 
-- Trainable word embeddings
-- Bidirectional LSTM layers
-- Sequence pooling
-- Dropout regularization
-- Fully connected classification layer
+- 128-dimensional trainable word embeddings with padding index 0
+- Single-layer bidirectional LSTM, hidden size 128 per direction (256 total)
+- Masked mean pooling and masked max pooling over the sequence, concatenated into a 512-dimensional representation (padding positions excluded from both pools)
+- Dropout regularization (p = 0.3)
+- Fully connected classification layer (512 → 3 classes)
 
 ## Training
 
@@ -283,17 +283,21 @@ Generated analysis outputs are stored in `results/analysis/`.
 
 The following results were obtained on a held-out test set of 904 examples.
 
-| Model | Configuration | Test Accuracy |
-|-------|---------------|---------------|
-| CNN | Input only | 33.41% |
-| CNN | Output only | **94.36%** |
-| LSTM | Output only | 83.08% |
+| Model | Configuration | Test Accuracy | Macro-F1 |
+|-------|---------------|---------------|----------|
+| CNN  | Input only       | 33.41% | — |
+| CNN  | Output only      | **94.36%** | — |
+| LSTM | Input only       | 33.41% | 0.265 |
+| LSTM | Output only      | **92.26%** | 0.922 |
+| LSTM | Input + output   | 90.60% | 0.906 |
 
-The CNN output-only model achieved the highest accuracy among the reported experiments.
+The CNN output-only model achieved the highest accuracy among the reported experiments, with the LSTM output-only configuration close behind.
 
-The input-only CNN performed near the random classification baseline of approximately 33.33%, suggesting that generated responses contain substantially more information about the source LLM than the original prompt.
+Both input-only models performed near the random classification baseline of approximately 33.33%, suggesting that generated responses contain substantially more information about the source LLM than the original prompt. On TXD-22 the user's prompt is sent to every LLM, so the prompt alone carries no evidence about which model answered.
 
-The reported CNN output checkpoint was selected after 10 training epochs, while the LSTM output checkpoint was trained for one epoch.
+Adding the prompt to the response (`input + output`) slightly decreased LSTM accuracy relative to `output only`. One likely explanation is that uninformative prompt tokens occupy sequence positions the LSTM still has to process, acting as a mild distractor.
+
+Each reported CNN checkpoint was selected after 10 training epochs. Each reported LSTM checkpoint was selected after 8 training epochs based on the best validation accuracy.
 
 ## Project Structure
 
