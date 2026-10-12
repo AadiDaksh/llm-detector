@@ -285,8 +285,8 @@ The following results were obtained on a held-out test set of 904 examples.
 
 | Model | Configuration | Test Accuracy | Macro-F1 |
 |-------|---------------|---------------|----------|
-| CNN  | Input only       | 33.41% | — |
-| CNN  | Output only      | **94.36%** | — |
+| CNN  | Input only       | 33.41% | 0.264 |
+| CNN  | Output only      | **94.36%** | 0.942 |
 | LSTM | Input only       | 33.41% | 0.265 |
 | LSTM | Output only      | **92.26%** | 0.922 |
 | LSTM | Input + output   | 90.60% | 0.906 |
@@ -304,33 +304,20 @@ Each reported CNN checkpoint was selected after 10 training epochs. Each reporte
 ```text
 llm-detector/
 ├── data/
-│   ├── raw/
-│   │   └── TXD-22 A Large-Scale Benchmark Dataset.csv
-│   └── processed/
-│       ├── train.csv
-│       ├── val.csv
-│       ├── test.csv
-│       └── label_mapping.json
 ├── models/
-│   ├── __init__.py
-│   ├── cnn.py
-│   └── lstm.py
+├── rq3/
+│   ├── rq3_experiment.py
+│   └── results/
 ├── results/
-│   ├── cnn/
-│   ├── lstm/
-│   └── analysis/
 ├── prepare_data.py
 ├── data_pipeline.py
 ├── train.py
 ├── evaluate.py
 ├── analyze.py
 ├── requirements.txt
-├── .gitignore
-├── .gitattributes
-└── README.md
+├── README.md
+└── .gitignore
 ```
-
-**Note:** The raw CSV and processed datasets are not included in the repository. They appear in the structure above after downloading and preparing the data.
 
 ## Limitations
 
