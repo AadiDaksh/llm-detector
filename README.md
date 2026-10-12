@@ -4,7 +4,7 @@
 A project developed as part of **CMPSC 448** at **Pennsylvania State University**.
 
 The project investigates whether neural networks can identify which LLM generated a text response. Using linguistic and structural patterns, the system classifies responses from **GPT, Claude, and Gemini** through Convolutional Neural Network (CNN) and Bidirectional Long Short-Term Memory (BiLSTM) architectures.The full project report is available here:
-[View Project Report (PDF)](reports/CMPSC448_Project1_Report.pdf)
+[View Project Report (PDF)](report/CMPSC448_Project1_Report.pdf)
 
 ## Features
 
